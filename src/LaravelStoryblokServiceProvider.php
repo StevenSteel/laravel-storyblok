@@ -27,7 +27,7 @@ class LaravelStoryblokServiceProvider extends ServiceProvider
     {
         $this->mergeConfigFrom(__DIR__ . '/../config/laravel-storyblok.php', 'laravel-storyblok');
 
-        $this->app->singleton(Client::class, function ($app) {
+        $this->app->singleton(Client::class, function () {
             $client = new Client(config('laravel-storyblok.api_key'));
             $client->editMode(config('laravel-storyblok.enable_edit_mode', false));
 
