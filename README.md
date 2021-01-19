@@ -1,4 +1,4 @@
-# laravel-storyblok
+# Laravel Storyblok
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/takethelead/laravel-storyblok.svg?style=flat-square)](https://packagist.org/packages/takethelead/laravel-storyblok)
 [![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/takethelead/laravel-storyblok/Tests?label=tests)](https://github.com/takethelead/laravel-storyblok/actions?query=workflow%3ATests+branch%3Amaster)
