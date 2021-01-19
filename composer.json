@@ -1,0 +1,58 @@
+{
+    "name": "takethelead/laravel-storyblok",
+    "description": "laravel-storyblok",
+    "keywords": [
+        "takethelead",
+        "Take The Lead",
+        "laravel-storyblok",
+        "Storyblok",
+        "Laravel"
+    ],
+    "homepage": "https://github.com/takethelead/laravel-storyblok",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Joren Van Hocht",
+            "email": "joren.van.hocht@takethelead.be",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.4|^8.0",
+        "illuminate/contracts": "^8.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^6.0",
+        "phpunit/phpunit": "^9.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "TakeTheLead\\LaravelStoryblok\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "TakeTheLead\\LaravelStoryblok\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "psalm": "vendor/bin/psalm",
+        "test": "vendor/bin/phpunit --colors=always",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "TakeTheLead\\LaravelStoryblok\\LaravelStoryblokServiceProvider"
+            ],
+            "aliases": {
+                "LaravelStoryblok": "TakeTheLead\\LaravelStoryblok\\LaravelStoryblokFacade"
+            }
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
