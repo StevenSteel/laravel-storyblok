@@ -2,8 +2,8 @@
 
 namespace TakeTheLead\LaravelStoryblok;
 
-use Storyblok\Client;
 use Exception;
+use Storyblok\Client;
 
 class Storyblok
 {
