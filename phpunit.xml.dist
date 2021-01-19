@@ -28,4 +28,9 @@
     <logging>
         <junit outputFile="build/report.junit.xml"/>
     </logging>
+    <php>
+        <server name="STORYBLOK_API_KEY" value="test" />
+        <server name="STORYBLOK_ENABLE_LOCAL_CACHE" value="false" />
+        <server name="enable_edit_mode" value="false" />
+    </php>
 </phpunit>
