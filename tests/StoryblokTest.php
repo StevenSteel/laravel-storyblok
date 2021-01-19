@@ -11,6 +11,8 @@ class StoryblokTest extends TestCase
     /** @test */
     public function it_can_use_the_api_without_specifing_a_cache_version()
     {
+        config()->set('laravel-storyblok.enable_local_cache', false);
+
         $storyblokClient = app(Client::class);
 
         $this->assertNull($storyblokClient->cacheVersion);
