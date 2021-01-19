@@ -2,7 +2,6 @@
 
 namespace TakeTheLead\LaravelStoryblok;
 
-use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\ServiceProvider;
 use Storyblok\Client;
