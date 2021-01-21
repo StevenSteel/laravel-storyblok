@@ -24,4 +24,15 @@ class Storyblok
 
         return $response->getBody()['story'];
     }
+
+    public function getStoryByUuid(string $uuid): array
+    {
+        $response = $this->client->getStoryByUuid($uuid);
+
+        if (! $response->getBody() && ! isset($response->getBody()['story'])) {
+            throw new Exception('Invalid Storyblok api call');
+        }
+
+        return $response->getBody()['story'];
+    }
 }

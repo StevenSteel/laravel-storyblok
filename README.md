@@ -78,7 +78,8 @@ class SomeClass
     
     public function someMethod()
     {
-        $this->storyblok->getStoryBySlug("your-slug");
+        $this->storyblok->getStoryBySlug("story-slug");
+        $this->storyblok->getStoryByUuid("story-uuid");
     }
 }
 ```
