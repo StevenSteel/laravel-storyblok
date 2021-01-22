@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-storyblok` will be documented in this file.
 
+## 1.0.3 - 2021-01-22
+
+- Fix facade
+
 ## 1.0.2 - 2021-01-22
 
 - Fix facade

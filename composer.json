@@ -55,7 +55,7 @@
                 "TakeTheLead\\LaravelStoryblok\\LaravelStoryblokServiceProvider"
             ],
             "aliases": {
-                "LaravelStoryblok": "TakeTheLead\\LaravelStoryblok\\LaravelStoryblokFacade"
+                "Storyblok": "TakeTheLead\\LaravelStoryblok\\LaravelStoryblokFacade"
             }
         }
     },
