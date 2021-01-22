@@ -46,6 +46,8 @@ class LaravelStoryblokServiceProvider extends ServiceProvider
         $this->app->singleton(Resolver::class, function () {
             return new Resolver();
         });
+
+        $this->app->alias(Storyblok::class, 'storyblok');
     }
 
     private function getStoryblokCacheVersion()

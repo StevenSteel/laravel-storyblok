@@ -35,4 +35,9 @@ class Storyblok
 
         return $response->getBody()['story'];
     }
+
+    public function getApi(): Client
+    {
+        return $this->client;
+    }
 }

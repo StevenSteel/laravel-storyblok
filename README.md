@@ -63,25 +63,19 @@ return [
 This package provides a wrapper around the default Storyblok client class and registers it within the Laravel service container.
 
 ```php
-<?php
+use Storyblok;
 
-use TakeTheLead\LaravelStoryblok\Storyblok;
+Storyblok::getStoryBySlug("story-slug");
+Stroyblok::getStoryByUuid("story-uuid");
+```
 
-class SomeClass
-{
-    private TakeTheLead\LaravelStoryblok\Storyblok $storyblok;
+## Need something else?
+If you need more functionality you get an instance of the underlying Storyblok API with:
 
-    public function __construct(Storyblok $storyblok)
-    {
-        $this->storyblok = $storyblok;
-    }
-    
-    public function someMethod()
-    {
-        $this->storyblok->getStoryBySlug("story-slug");
-        $this->storyblok->getStoryByUuid("story-uuid");
-    }
-}
+```php
+use Storyblok;
+
+$api = Storyblok::getApi();
 ```
 
 ## The ClearStoryblokCacheCommand
