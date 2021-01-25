@@ -10,10 +10,10 @@ class StoryblokWebhookController
     public function __invoke()
     {
         collect(config('laravel-storyblok.webhook_actions', []))
-            ->filter(function($action) {
+            ->filter(function ($action) {
                 return app($action) instanceof ActionInterface;
             })
-            ->each(function($action) {
+            ->each(function ($action) {
                 app($action)->execute();
             });
 
