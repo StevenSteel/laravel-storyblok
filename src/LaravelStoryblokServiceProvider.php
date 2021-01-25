@@ -2,11 +2,13 @@
 
 namespace TakeTheLead\LaravelStoryblok;
 
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\ServiceProvider;
 use Storyblok\Client;
 use Storyblok\RichtextRender\Resolver;
 use TakeTheLead\LaravelStoryblok\Commands\ClearStoryblokCacheCommand;
+use TakeTheLead\LaravelStoryblok\Http\Controllers\StoryblokWebhookController;
 
 class LaravelStoryblokServiceProvider extends ServiceProvider
 {
@@ -21,6 +23,8 @@ class LaravelStoryblokServiceProvider extends ServiceProvider
                 ClearStoryblokCacheCommand::class,
             ]);
         }
+
+        $this->registerRouteMacros();
     }
 
     public function register()
@@ -66,5 +70,14 @@ class LaravelStoryblokServiceProvider extends ServiceProvider
         $versionData = json_decode($versionData);
 
         return $versionData->version ?? time();
+    }
+
+    private function registerRouteMacros()
+    {
+        Route::macro('storyblok', function () {
+            Route::group(['middleware' => config('laravel-storyblok.route_middleware')], function () {
+                Route::post('storyblok/webhook', StoryblokWebhookController::class);
+            });
+        });
     }
 }

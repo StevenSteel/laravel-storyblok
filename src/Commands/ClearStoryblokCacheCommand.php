@@ -3,8 +3,7 @@
 namespace TakeTheLead\LaravelStoryblok\Commands;
 
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Storage;
-use Storyblok\Client;
+use TakeTheLead\LaravelStoryblok\Actions\ClearCacheAction;
 
 class ClearStoryblokCacheCommand extends Command
 {
@@ -12,16 +11,13 @@ class ClearStoryblokCacheCommand extends Command
 
     public $description = 'Clear the local Storyblok cache';
 
-    public function handle(Client $storyblokClient)
+    public function handle(ClearCacheAction $clearCacheAction)
     {
         $versionFileName = config('laravel-storyblok.cache_version_file_name');
         $versionFilePath = config('laravel-storyblok.cache_path');
-        $versionData = json_encode(['version' => time()]);
 
-        Storage::disk(config('laravel-storyblok.disk'))->put("$versionFilePath/$versionFileName", $versionData);
+        $clearCacheAction->execute();
 
-        $storyblokClient->flushCache();
-
-        $this->info("New version saved in $versionFilePath/$versionFileName");
+        $this->info("New cache version saved in $versionFilePath/$versionFileName");
     }
 }

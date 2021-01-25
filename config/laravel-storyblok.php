@@ -31,4 +31,25 @@ return [
      * Enable edit mode.
      */
     'enable_edit_mode' => env('STORYBLOK_ENABLE_EDIT_MODE', false),
+
+    /**
+     * The webhook secret, you can leave this empty when you are not using a secret.
+     */
+    'webhook_secret' => env('STORYBLOK_WEBHOOK_SECRET', ''),
+
+    /**
+     * The middleware that should be applied to the webhook route.
+     */
+    'route_middleware' => [
+        \TakeTheLead\LaravelStoryblok\Http\Middleware\VerifyStoryblokWebhookSignature::class,
+    ],
+
+    /**
+     * The actions that should be execute whenever the webhook gets called.
+     *
+     * All actions should implement the \TakeTheLead\LaravelStoryblok\Actions\ActionInterface
+     */
+    'webhook_actions' => [
+        \TakeTheLead\LaravelStoryblok\Actions\ClearCacheAction::class,
+    ],
 ];

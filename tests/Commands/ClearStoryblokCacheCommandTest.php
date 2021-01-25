@@ -20,7 +20,7 @@ class ClearStoryblokCacheCommandTest extends TestCase
         Storage::put($expectedVersionLocation, json_encode(['version' => $originalVersion]));
 
         $this->artisan(ClearStoryblokCacheCommand::class)
-            ->expectsOutput("New version saved in $expectedVersionLocation");
+            ->expectsOutput("New cache version saved in $expectedVersionLocation");
 
         Storage::disk(config('laravel-storyblok.disk'))
             ->assertExists($expectedVersionLocation);
