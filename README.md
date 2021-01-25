@@ -22,6 +22,8 @@ php artisan vendor:publish --provider="TakeTheLead\LaravelStoryblok\LaravelStory
 This is the contents of the published config file:
 
 ```php
+<?php
+
 return [
 
     /**
@@ -53,6 +55,27 @@ return [
      * Enable edit mode.
      */
     'enable_edit_mode' => env('STORYBLOK_ENABLE_EDIT_MODE', false),
+
+    /**
+     * The webhook secret, you can leave this empty when you are not using a secret.
+     */
+    'webhook_secret' => env('STORYBLOK_WEBHOOK_SECRET', ''),
+
+    /**
+     * The middleware that should be applied to the webhook route.
+     */
+    'route_middleware' => [
+        \TakeTheLead\LaravelStoryblok\Http\Middleware\VerifyStoryblokWebhookSignature::class,
+    ],
+
+    /**
+     * The actions that should be execute whenever the webhook gets called.
+     *
+     * All actions should implement the \TakeTheLead\LaravelStoryblok\Actions\ActionInterface
+     */
+    'webhook_actions' => [
+        \TakeTheLead\LaravelStoryblok\Actions\ClearCacheAction::class,
+    ],
 ];
 ```
 
@@ -76,6 +99,47 @@ If you need more functionality you get an instance of the underlying Storyblok A
 use Storyblok;
 
 $api = Storyblok::getApi();
+```
+
+## Handling webhooks
+This package ships with a preconfigured setup for handling webhooks. Simply add the route below to your routes file.
+
+```php
+Route::storyblok();
+```
+
+> Make sure to add this route to the `except` array within the `VerifyCsrfToken` middleware to prevent token mismatches.
+
+### Verifing the webhook signature
+If you have configured a webhook secret in Storyblok, make sure to add it as an environment variable to your env file.
+Out of the box a middleware is applied to your route to verify the signature. You are however free to add your own implementation (or add extra middleware) from within `route_middleware` setting in the config file.
+
+```
+STORYBLOK_WEBHOOK_SECRET=your-secret
+```
+
+### Performing actions whenever the webhook is called
+Within the config file you can specify which actions should be performed whenever the webhook is being called. The setting key is called `webhook_actions`.
+When adding your own action classes, make sure they implement the `\TakeTheLead\LaravelStoryblok\Actions\ActionInterface`. Otheriwse your action won't be exectued.
+
+Example:
+```
+<?php
+
+use \TakeTheLead\LaravelStoryblok\Actions\ActionInterface;
+
+class YourAction implements ActionInterface
+{
+    public function __construct()
+    {
+        // you can inject any class registerd within the IOC container
+    }
+
+    public function execute(): void
+    {
+        // Perform your action
+    }
+}
 ```
 
 ## The ClearStoryblokCacheCommand
