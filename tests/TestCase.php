@@ -22,4 +22,9 @@ class TestCase extends Orchestra
     public function getEnvironmentSetUp($app)
     {
     }
+
+    public function registerWebhookRoute()
+    {
+        $this->app['router']->storyblok();
+    }
 }
