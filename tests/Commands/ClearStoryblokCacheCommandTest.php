@@ -1,9 +1,10 @@
 <?php
 
-namespace TakeTheLead\LaravelStoryblok\Tests;
+namespace TakeTheLead\LaravelStoryblok\Tests\Commands;
 
 use Illuminate\Support\Facades\Storage;
 use TakeTheLead\LaravelStoryblok\Commands\ClearStoryblokCacheCommand;
+use TakeTheLead\LaravelStoryblok\Tests\TestCase;
 
 class ClearStoryblokCacheCommandTest extends TestCase
 {
