@@ -178,7 +178,8 @@ Please review [our security policy](../../security/policy) on how to report secu
 
 ## Credits
 
-- [Joren Van Hocht](https://github.com/TakeTheLead)
+- [Joren Van Hocht](https://github.com/jorenvh)
+- [Take The Lead](https://github.com/takethelead)
 - [All Contributors](../../contributors)
 
 ## License
