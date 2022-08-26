@@ -9,7 +9,7 @@ use TakeTheLead\LaravelStoryblok\Tests\TestCase;
 class ClearStoryblokCacheCommandTest extends TestCase
 {
     /** @test */
-    public function it_can_clear_the_storyblok_cahce()
+    public function it_can_clear_the_storyblok_cache()
     {
         Storage::fake();
 
